@@ -19,7 +19,7 @@ LLAMA_CLI_COMMAND = [
     "-m", "../qwen2.5-0.5b-instruct-q4_k_m.gguf",
     "-t", "4",
     "-cnv",
-    "-p" "你是一个垃圾分类助手，请根据我提供的物体类别给出建议",
+    "-p", "你是一个垃圾分类助手，请根据我提供的物体类别给出建议",
 ]
 
 # MobileNet 二进制文件路径
@@ -41,9 +41,10 @@ def start_llama_cli():
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
-            bufsize=1
+            bufsize=1,
+            # universal_newlines=True
         )
-        print("llama-cli start")
+
         # 启动监听输出的线程
         threading.Thread(target=read_llama_output, daemon=True).start()
     except Exception as e:
@@ -65,10 +66,14 @@ def read_llama_output():
     """
     global llama_process
     while llama_process and llama_process.stdout:
-        line = llama_process.stdout.readline().strip()
-        if line:
-            print(line)
-            llama_queue.put(line)
+        try:
+            line = llama_process.stdout.readline().strip()
+            if line:
+                print("llama-cli:"line)
+                llama_queue.put(line)
+        except Exception as e:
+            print(f"Error reading llama-cli output: {e}")
+            break
 
 def send_prompt_to_llama(prompt: str) -> str:
     """
@@ -78,16 +83,16 @@ def send_prompt_to_llama(prompt: str) -> str:
     try:
         # 发送 prompt
         print("send prompt to qwen2.5")
-        llama_process.stdin.write(prompt)
+        llama_process.stdin.write(prompt + "\n")
         llama_process.stdin.flush()
-
+        
         # 从队列中读取响应
         response_lines = []
         while True:
             try:
                 # 阻塞读取队列中的输出，设置超时时间防止死锁
-                line = llama_queue.get(timeout=600)
-                if line.strip() == ">":
+                line = llama_queue.get(timeout=60)
+                if line.strip() == "":
                     break
                 response_lines.append(line)
             except queue.Empty:
@@ -110,7 +115,7 @@ def classify_image_with_mobilenet(image_path: str) -> str:
         )
         if result.returncode != 0:
             raise RuntimeError(f"MobileNet inference failed: {result.stderr.strip()}")
-        
+
         # 提取推理结果中最高置信率的类别
         output_lines = result.stdout.splitlines()
         top1_category = None
@@ -123,13 +128,13 @@ def classify_image_with_mobilenet(image_path: str) -> str:
                 # 提取类别名称（去掉类别编号和置信度）
                 top1_category = " ".join(top1_line.split()[1:])
                 break
-        
+
         if top1_category:
-            print("category:",top1_category)
+            print("category:", top1_category)
             return top1_category
         else:
             raise ValueError("Failed to parse top1 category from MobileNet output.")
-    
+
     except Exception as e:
         return f"Error during MobileNet inference: {e}"
 
@@ -138,7 +143,7 @@ def generate_prompt(image_class: str) -> str:
     构造用于垃圾分类建议的 prompt。
     """
     return (
-        f"你是一个垃圾分类助手，专注于根据输入的垃圾名称或者类别，提供垃圾的具体分类（如可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及处理建议，请尽可能简洁、准确地回答，并遵循以下规则：\\1. 该垃圾的具体类型。\2. 对应的处理建议，如果垃圾属于特殊类别，请标明具体处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议：/\n"
+        f"你是一个垃圾分类助手，专注于根据输入的垃圾名称或者类别，提供垃圾的具体分类（如可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及处理建议，请尽可能简洁、准确地回答，并遵循以下规则：\\1. 该垃圾的具体类型。\\2. 对应的处理建议，如果垃圾属于特殊类别，请标明具体处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议：/\n"
     )
 
 # FastAPI 生命周期事件
@@ -177,6 +182,7 @@ async def upload_image(file: UploadFile = File(...)):
         print("prompt:", prompt)
         suggestion = send_prompt_to_llama(prompt)
         print("llm output:", suggestion)
+
         # 返回响应
         return {
             "message": "File uploaded and processed successfully!",
