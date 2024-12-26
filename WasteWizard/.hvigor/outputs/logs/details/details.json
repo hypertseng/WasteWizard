@@ -16,28 +16,18 @@
     "IS_HVIGORFILE_TYPE_CHECK": false,
     "TASK_TIME": {
       "1043bfc77febe75fafec0c4309faccf1": {
-        "init": 185917,
-        "PreBuild": 12878459,
-        "MergeProfile": 2750250,
-        "PreCheckSyscap": 282875,
-        "ProcessProfile": 43740083,
-        "ProcessRouterMap": 1967125,
-        "PreviewProcessResource": 1097917,
-        "GenerateLoaderJson": 10779083,
-        "PreviewCompileResource": 67862458,
-        "PreviewHookCompileResource": 127500,
-        "CopyPreviewProfile": 1676375,
-        "ReplacePreviewerPage": 168792,
-        "buildPreviewerResource": 91916,
-        "PreviewUpdateAssets": 754583,
-        "PreviewArkTS": 4914179542,
-        "PreviewBuild": 140084
-      },
-      "APP": {
-        "init": 101500
+        "ConfigureCmake": 116625,
+        "PreCheckSyscap": 163958,
+        "ProcessIntegratedHsp": 647792,
+        "BuildNativeWithCmake": 90083,
+        "SyscapTransform": 424500,
+        "BuildNativeWithNinja": 229792,
+        "BuildJS": 740541,
+        "SignHap": 530541,
+        "assembleHap": 78417
       }
     },
-    "TOTAL_TIME": 5200376375,
-    "BUILD_ID": "202412261549097960"
+    "TOTAL_TIME": 379167375,
+    "BUILD_ID": "202412270022415510"
   }
 }

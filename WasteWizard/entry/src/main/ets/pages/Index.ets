@@ -1,11 +1,11 @@
 import { router } from '@kit.ArkUI';
 import { url } from '@kit.ArkTS';
 
-console.log('测试');
+// console.log('测试');
 // 1.变量：let 变量名:类型=数值
 //  string,number,boolean
-let isLogin:boolean=false
-console.log('',isLogin);
+// let isLogin:boolean=false
+// console.log('',isLogin);
 // 2.常量: const 常量名:类型=数值（不可变
 // 3.数组：let 数组名:类型[]=[...,...,]
 // 4.函数：function ...(n1:type,){ return ...}

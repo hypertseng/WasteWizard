@@ -19,7 +19,7 @@
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
-        "startWindowIcon": "$media:startIcon",
+        "startWindowIcon": "$media:cameraIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": [
@@ -48,10 +48,11 @@
         ],
       }
     ],
+    //增加相机相关权限
     "requestPermissions": [
       {
         "name": "ohos.permission.CAMERA",
-        "reason": "$string:EntryAbility_desc",
+        "reason": "$string:EntryAbility_desc",//src/main/resources/base/element/string.json中弹窗提示权限需求
         "usedScene":
         {
           "abilities": [
