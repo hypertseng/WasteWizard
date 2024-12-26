@@ -47,6 +47,58 @@
           }
         ],
       }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.CAMERA",
+        "reason": "$string:EntryAbility_desc",
+        "usedScene":
+        {
+          "abilities": [
+            "EntryAbility"
+          ]
+        }
+      },
+      {
+        "name": "ohos.permission.MICROPHONE",
+        "reason": "$string:EntryAbility_desc",
+        "usedScene":
+        {
+          "abilities": [
+            "EntryAbility"
+          ]
+        }
+      },
+      {
+        "name":"ohos.permission.MEDIA_LOCATION",
+        "reason": "$string:EntryAbility_desc",
+        "usedScene":
+        {
+          "abilities": [
+            "EntryAbility"
+          ]
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "$string:EntryAbility_desc",
+        "usedScene":
+        {
+          "abilities": [
+            "EntryAbility"
+          ]
+        }
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "$string:EntryAbility_desc",
+        "usedScene":
+        {
+          "abilities": [
+            "EntryAbility"
+          ]
+        },
+      }
     ]
-  }
+  },
 }
