@@ -10,7 +10,7 @@ import os
 app = FastAPI()
 
 # 图片保存目录
-UPLOAD_DIR = Path("./")
+UPLOAD_DIR = Path("./onnx_mobilenetv2_c++")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 # llama-cli 路径和命令
@@ -43,7 +43,7 @@ def start_llama_cli():
             text=True,
             bufsize=1
         )
-        print(llama-cli start)
+        print("llama-cli start")
         # 启动监听输出的线程
         threading.Thread(target=read_llama_output, daemon=True).start()
     except Exception as e:
