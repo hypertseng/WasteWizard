@@ -15,7 +15,7 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 
 # llama-cli 路径和命令
 LLAMA_CLI_COMMAND = [
-    "../llama.cpp/build/bin/llama-cli",
+    "./llama.cpp/build/bin/llama-cli",
     "-m", "../qwen2.5-0.5b-instruct-q4_k_m.gguf",
     "-t", "4",
     "-cnv",
