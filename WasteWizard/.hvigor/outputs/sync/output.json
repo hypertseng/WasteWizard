@@ -1,48 +1,48 @@
 {
   "ohos-module-entry": {
     "SELECT_TARGET": "default",
-    "MODULE_BUILD_DIR": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build",
+    "MODULE_BUILD_DIR": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build",
     "DEPENDENCY_INFO": {},
     "TARGETS": {
       "default": {
-        "SOURCE_ROOT": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/src/main",
+        "SOURCE_ROOT": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/src/main",
         "RESOURCES_PATH": [
-          "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/src/main/resources"
+          "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/src/main/resources"
         ],
         "BUILD_PATH": {
-          "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/outputs/default",
-          "INTERMEDIA_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates",
-          "JS_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader_out/default",
-          "JS_LITE_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader_out_lite/default",
-          "RES_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/res/default",
-          "RES_PROFILE_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/res/default/resources/base/profile",
-          "ETS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/cache/default/default@CompileArkTS/esmodule",
-          "JS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/cache/default/default@CompileJS/jsbundle",
-          "WORKER_LOADER": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader/default/loader.json",
-          "MANIFEST_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/manifest/default",
-          "OUTPUT_METADATA_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/hap_metadata/default/output_metadata.json"
+          "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/cache/default/default@CompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/cache/default/default@CompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/hap_metadata/default/output_metadata.json"
         },
         "BUILD_OPTION": {
           "debuggable": true
         }
       },
       "ohosTest": {
-        "SOURCE_ROOT": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/src/ohosTest",
+        "SOURCE_ROOT": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/src/ohosTest",
         "RESOURCES_PATH": [
-          "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/src/ohosTest/resources"
+          "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/src/ohosTest/resources"
         ],
         "BUILD_PATH": {
-          "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/outputs/ohosTest",
-          "INTERMEDIA_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates",
-          "JS_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader_out/ohosTest",
-          "JS_LITE_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader_out_lite/ohosTest",
-          "RES_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/res/ohosTest",
-          "RES_PROFILE_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/res/ohosTest/resources/base/profile",
-          "ETS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileArkTS/esmodule",
-          "JS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileJS/jsbundle",
-          "WORKER_LOADER": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/loader/ohosTest/loader.json",
-          "MANIFEST_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/manifest/ohosTest",
-          "OUTPUT_METADATA_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry/build/default/intermediates/hap_metadata/ohosTest/output_metadata.json"
+          "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/outputs/ohosTest",
+          "INTERMEDIA_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader_out/ohosTest",
+          "JS_LITE_ASSETS_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader_out_lite/ohosTest",
+          "RES_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/res/ohosTest",
+          "RES_PROFILE_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/res/ohosTest/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/loader/ohosTest/loader.json",
+          "MANIFEST_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/manifest/ohosTest",
+          "OUTPUT_METADATA_JSON": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry/build/default/intermediates/hap_metadata/ohosTest/output_metadata.json"
         },
         "BUILD_OPTION": {
           "debuggable": true
@@ -54,8 +54,7 @@
         "debuggable": true,
         "copyFrom": "default",
         "strictMode": {
-          "caseSensitiveCheck": true,
-          "useNormalizedOHMUrl": true
+          "caseSensitiveCheck": true
         },
         "name": "debug"
       }
@@ -96,15 +95,15 @@
   },
   "ohos-project": {
     "SELECT_PRODUCT_NAME": "default",
-    "MODULE_BUILD_DIR": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/build",
-    "BUNDLE_NAME": "com.example.helloworld",
+    "MODULE_BUILD_DIR": "/Users/meng/DevEcoStudioProjects/WasteWizard3/build",
+    "BUNDLE_NAME": "com.example.wastewizard",
     "BUILD_PATH": {
-      "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/build/outputs/default"
+      "OUTPUT_PATH": "/Users/meng/DevEcoStudioProjects/WasteWizard3/build/outputs/default"
     },
     "MODULES": [
       {
         "name": "entry",
-        "srcPath": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/entry",
+        "srcPath": "/Users/meng/DevEcoStudioProjects/WasteWizard3/entry",
         "targets": [
           {
             "name": "default",
@@ -113,7 +112,7 @@
             ]
           }
         ],
-        "belongProjectPath": "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard"
+        "belongProjectPath": "/Users/meng/DevEcoStudioProjects/WasteWizard3"
       }
     ],
     "PROFILE_OPT": {
@@ -123,12 +122,11 @@
           {
             "name": "default",
             "signingConfig": "default",
-            "compatibleSdkVersion": "5.0.1(13)",
+            "compatibleSdkVersion": "4.1.0(11)",
             "runtimeOS": "HarmonyOS",
             "buildOption": {
               "strictMode": {
-                "caseSensitiveCheck": true,
-                "useNormalizedOHMUrl": true
+                "caseSensitiveCheck": true
               }
             }
           }
@@ -163,7 +161,7 @@
       "hvigor.keepDependency": true
     },
     "OVERALL_PROJECT_PATHS": [
-      "/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard"
+      "/Users/meng/DevEcoStudioProjects/WasteWizard3"
     ]
   },
   "version": 1

@@ -1,8 +1,13 @@
-import { abilityAccessCtrl, bundleManager, common, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import bundleManager from '@ohos.bundle.bundleManager';
+import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
+import { BusinessError } from '@ohos.base';
+import { common, Want } from '@kit.AbilityKit';
 
-//校验当前是否已经授权
-async function checkPermissionGrant(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
+// 需要检测（申请）的权限
+const permissions: Array<Permissions> = ['ohos.permission.CAMERA'];
+
+// 1.1具体权限检测
+async function checkAccessToken(permission: Permissions): Promise<abilityAccessCtrl.GrantStatus> {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
   let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
 
@@ -19,7 +24,7 @@ async function checkPermissionGrant(permission: Permissions): Promise<abilityAcc
 
   // 校验应用是否被授予权限
   try {
-    grantStatus = await atManager.checkAccessToken(tokenId, permission);
+    grantStatus = await atManager.checkAccessToken(tokenId, permission);//核心代码
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to check access token. Code is ${err.code}, message is ${err.message}`);
@@ -28,39 +33,38 @@ async function checkPermissionGrant(permission: Permissions): Promise<abilityAcc
   return grantStatus;
 }
 
-// 检查权限--无权限则授权
+// 1.2检测权限
 export async function checkPermissions(context: common.UIAbilityContext): Promise<boolean> {
-  let res:boolean=false
-  const permissions:Array<Permissions>=[
-    'ohos.permission.CAMERA',//相机权限 允许用户使用相机
+  let grantStatus: abilityAccessCtrl.GrantStatus = await checkAccessToken(permissions[0]);
+  let hasPermission:boolean=false
 
-  ]
-  //权限1:相机权限
-  let grantStatus1: boolean = await checkPermissionGrant(permissions[0]) === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED;
-  if (!grantStatus1) {
+  if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+    // 已经授权，可以继续访问目标操作
+    hasPermission=true
+  } else {
     // 申请相机权限
     reqPermissionsFromUser(permissions,context)
-  } else {
-    // 相机已经授权
-    res=true
   }
-  //权限2...
 
-  return res
+  return hasPermission
 }
 
-// 在UI中向用户申请授权
-const reqPermissionsFromUser = (permissions: Array<Permissions>, context: common.UIAbilityContext): void=> {
+// 2.动态申请权限
+export async function reqPermissionsFromUser(permissions: Array<Permissions>, context: common.UIAbilityContext) {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
+  // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗[核心函数]
   atManager.requestPermissionsFromUser(context, permissions).then((data) => {
     let grantStatus: Array<number> = data.authResults;
     let length: number = grantStatus.length;
     for (let i = 0; i < length; i++) {
       if (grantStatus[i] === 0) {
         // 用户授权，可以继续访问目标操作
+        console.log('用户选择授权')
       } else {
-        // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
+        // 3. 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
+        console.log('用户选择不授权')
+        openPermissionsInSystemSettings(context)
+        console.log('用户选择不授权')
         return;
       }
     }
@@ -68,4 +72,21 @@ const reqPermissionsFromUser = (permissions: Array<Permissions>, context: common
   }).catch((err: BusinessError) => {
     console.error(`Failed to request permissions from user. Code is ${err.code}, message is ${err.message}`);
   })
+}
+
+//3.授权结果处理：用户拒绝授权
+function openPermissionsInSystemSettings(context: common.UIAbilityContext): void {
+  //启动一个设置页（应用）
+  //因openharmony和harmonyOS API不同，导致用户拒绝权限获取后，设置页调换不出来。
+  const  bundleInfo =  bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+  context.startAbility({
+    bundleName:'com.huawei.hmos.settings',
+    abilityName:'com.huawei.hmos.settings.MainAbility',
+    uri:'application_info_entry',
+    parameters:{
+      //按照包名，打开对应设置页
+      pushParams:bundleInfo.name
+    }
+  })
+
 }

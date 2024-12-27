@@ -2,8 +2,8 @@
   "src": [
     "pages/Index",
     "pages/MainPage",
-    "pages/VisualPage",
     "pages/IngPage",
+    "pages/VisualPage",
     "pages/ResultPage"
   ]
 }

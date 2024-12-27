@@ -52,7 +52,7 @@
     "requestPermissions": [
       {
         "name": "ohos.permission.CAMERA",
-        "reason": "$string:EntryAbility_desc",//src/main/resources/base/element/string.json中弹窗提示权限需求
+        "reason": "$string:Camera_permission",//src/main/resources/base/element/string.json中弹窗提示权限需求
         "usedScene":
         {
           "abilities": [
@@ -101,5 +101,5 @@
         },
       }
     ]
-  },
+  }
 }
