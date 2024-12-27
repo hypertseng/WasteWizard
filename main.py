@@ -67,9 +67,9 @@ def read_llama_output():
     global llama_process
     while llama_process and llama_process.stdout:
         try:
-            line = llama_process.stdout.readline().strip()
+            line = llama_process.stdout.readline()
             if line:
-                print("llama-cli:"line)
+                print("llama-cli:", line, end="")
                 llama_queue.put(line)
         except Exception as e:
             print(f"Error reading llama-cli output: {e}")
@@ -88,13 +88,15 @@ def send_prompt_to_llama(prompt: str) -> str:
         
         # 从队列中读取响应
         response_lines = []
+        flag = False
         while True:
             try:
                 # 阻塞读取队列中的输出，设置超时时间防止死锁
-                line = llama_queue.get(timeout=60)
-                if line.strip() == "":
+                line = llama_queue.get(timeout=180)
+                if line[0] == ">" : flag = True
+                if line.strip() == "" and flag:
                     break
-                response_lines.append(line)
+                response_lines.append(line.strip())
             except queue.Empty:
                 break
         return "\n".join(response_lines)
@@ -143,7 +145,7 @@ def generate_prompt(image_class: str) -> str:
     构造用于垃圾分类建议的 prompt。
     """
     return (
-        f"你是一个垃圾分类助手，专注于根据输入的垃圾名称或者类别，提供垃圾的具体分类（如可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及处理建议，请尽可能简洁、准确地回答，并遵循以下规则：\\1. 该垃圾的具体类型。\\2. 对应的处理建议，如果垃圾属于特殊类别，请标明具体处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议：/\n"
+        f"你是一个垃圾分类助手，专注于根据输入的垃圾名称或者类别，提供垃圾的具体分类（如可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及处理建议，请尽可能简洁、准确地回答，并按以下规则进行回复：\\1. 该垃圾的具体类型。\\2. 对应的处理建议，如果垃圾属于特殊类别，请标明具体处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议："
     )
 
 # FastAPI 生命周期事件
@@ -179,7 +181,6 @@ async def upload_image(file: UploadFile = File(...)):
 
         # 构造 prompt 并调用 llama-cli 生成分类建议
         prompt = generate_prompt(image_class)
-        print("prompt:", prompt)
         suggestion = send_prompt_to_llama(prompt)
         print("llm output:", suggestion)
 
