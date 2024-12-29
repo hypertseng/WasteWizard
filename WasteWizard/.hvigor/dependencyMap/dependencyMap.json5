@@ -1,1 +1,1 @@
-{"basePath":"/Users/meng/DevEcoStudioProjects/WasteWizard/WasteWizard/.hvigor/dependencyMap/dependencyMap.json5","rootDependency":"./oh-package.json5","dependencyMap":{"entry":"./entry/oh-package.json5"},"modules":[{"name":"entry","srcPath":"../../../entry"}]}
+{"basePath":"/Users/meng/DevEcoStudioProjects/WasteWizard3/.hvigor/dependencyMap/dependencyMap.json5","rootDependency":"./oh-package.json5","dependencyMap":{"entry":"./entry/oh-package.json5"},"modules":[{"name":"entry","srcPath":"../../../entry"}]}

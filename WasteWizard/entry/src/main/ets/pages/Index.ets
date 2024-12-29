@@ -61,13 +61,13 @@ struct Index {
       Blank().layoutWeight(2.5).height('100%')
       Image($r('app.media.appIcon')) // 假设图标文件名为 appIcon.png
         .id('AppIcon') // 图片组件的唯一标识符
-        // .width(60) // 设置图标的宽
+          // .width(60) // 设置图标的宽
         .alignRules({
           top: { anchor: '__container__', align: VerticalAlign.Top },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         }) // 图标水平居中，位于顶部
         .layoutWeight(3)
-        // .height('100%')
+      // .height('100%')
       Text(this.message)//基础组件（参数）
         .id('WasteWizard')//基础组件的属性方法
         .fontSize(46)
@@ -80,7 +80,7 @@ struct Index {
         })
         .layoutWeight(2)
 
-        // .height('100%')
+      // .height('100%')
       Button('Start')
         .id('entry')
         .backgroundColor('#006400')
