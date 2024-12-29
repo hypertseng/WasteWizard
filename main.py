@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
+import uvicorn
 import shutil
 from pathlib import Path
 import subprocess
@@ -99,7 +100,10 @@ def send_prompt_to_llama(prompt: str) -> str:
                 response_lines.append(line.strip())
             except queue.Empty:
                 break
-        return "\n".join(response_lines)
+        response = "\n".join(response_lines)
+        for i in range(len(response)):
+            if response[i] == ">":
+                return response[i:-1]
     except Exception as e:
         return f"Error interacting with llama-cli: {e}"
 
@@ -145,7 +149,7 @@ def generate_prompt(image_class: str) -> str:
     构造用于垃圾分类建议的 prompt。
     """
     return (
-        f"你是一个垃圾分类助手，专注于根据输入的垃圾名称或者类别，提供垃圾的具体分类（如可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及处理建议，请尽可能简洁、准确地回答，并按以下规则进行回复：\\1. 该垃圾的具体类型。\\2. 对应的处理建议，如果垃圾属于特殊类别，请标明具体处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议："
+        f"请提供垃圾的分类（可回收垃圾、不可回收垃圾、厨余垃圾、有害垃圾等）以及详细的处理建议，并按以下规则回复：\\1. 垃圾的具体类型。\\2. 对应的处理建议，如果垃圾属于特殊类别，请标明特殊处理方式（如电池、有毒化学品等的处理建议。）\\这是识别出的垃圾类别：{image_class}。\\请回答并给出建议："
     )
 
 # FastAPI 生命周期事件
@@ -197,3 +201,6 @@ async def upload_image(file: UploadFile = File(...)):
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)
