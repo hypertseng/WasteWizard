@@ -5,9 +5,8 @@
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "phone",
-      "tablet",
-      "2in1"
+      "default",
+      "tablet"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -17,9 +16,9 @@
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:EntryAbility_desc",
-        "icon": "$media:layered_image",
+        "icon": "$media:icon",
         "label": "$string:EntryAbility_label",
-        "startWindowIcon": "$media:cameraIcon",
+        "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": [
@@ -34,45 +33,13 @@
         ]
       }
     ],
-    "extensionAbilities": [
-      {
-        "name": "EntryBackupAbility",
-        "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",
-        "type": "backup",
-        "exported": false,
-        "metadata": [
-          {
-            "name": "ohos.extension.backup",
-            "resource": "$profile:backup_config"
-          }
-        ],
-      }
-    ],
-    //增加相机相关权限
     "requestPermissions": [
       {
+        "name": "ohos.permission.INTERNET" // 配置 ohos.permission.INTERNET 权限
+      },
+      {
         "name": "ohos.permission.CAMERA",
-        "reason": "$string:Camera_permission",//src/main/resources/base/element/string.json中弹窗提示权限需求
-        "usedScene":
-        {
-          "abilities": [
-            "EntryAbility"
-          ]
-        }
-      },
-      {
-        "name": "ohos.permission.MICROPHONE",
-        "reason": "$string:EntryAbility_desc",
-        "usedScene":
-        {
-          "abilities": [
-            "EntryAbility"
-          ]
-        }
-      },
-      {
-        "name":"ohos.permission.MEDIA_LOCATION",
-        "reason": "$string:EntryAbility_desc",
+        "reason": "$string:EntryAbility_desc",//src/main/resources/base/element/string.json中弹窗提示权限需求
         "usedScene":
         {
           "abilities": [
@@ -98,7 +65,7 @@
           "abilities": [
             "EntryAbility"
           ]
-        },
+        }
       }
     ]
   }

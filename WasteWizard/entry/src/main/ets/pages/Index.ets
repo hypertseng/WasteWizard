@@ -1,57 +1,7 @@
-import { router } from '@kit.ArkUI';
-import { url } from '@kit.ArkTS';
+import router from '@ohos.router';
 
-// console.log('测试');
-// 1.变量：let 变量名:类型=数值
-//  string,number,boolean
-// let isLogin:boolean=false
-// console.log('',isLogin);
-// 2.常量: const 常量名:类型=数值（不可变
-// 3.数组：let 数组名:类型[]=[...,...,]
-// 4.函数：function ...(n1:type,){ return ...}
-//    let a:string=f1()
-// 5.对象：
-// interface Person{
-//  name:string
-//  age:number
-//  weight:number
-//  sing:(song:string)=>void//对象中的方法
-// }
-// 6.联合类型：let judge:number|string=100
-//    let gender:'man'|'woman'|'unknown'='unknown'
-// 7.枚举：
-// enum themecolor{
-//   red='',
-//   orange=''
-// }
-// let color:themecolor=themecolor.red
-//    比如页面颜色限定
-
-
-
-//1.组件
-//容器组件 Row(){...}
-//基础组件 基础组件(参数)
-
-//2.弹窗
-// AlertDialog.show({
-//   message:'弹窗'
-// })
-
-//3.页面状态管理
-//state(状态变量)--render-->UI(界面)
-//state(状态变量)<--event-handlers--UI(界面)
-//状态变量--装饰器修饰-->设置类型和初始值-->改变引起UI渲染
-
-//4.foreach渲染控制
-
-//5.Stack()层叠容器.zIndex
-
-//6.切换动画animation
-
-//7.路由--创建页面-跳转和后退-页面栈-路由模式-跳转传参
-@Entry //程序入口组件
-@Component //声明 Index 是一个 UI 组件。框架会根据它生成必要的视图和逻辑代码。
+@Entry
+@Component
 struct Index {
   @State message: string = 'WasteWizard';
   //构建界面
@@ -95,6 +45,7 @@ struct Index {
           router.pushUrl({
             url:'pages/MainPage'
           })
+
         }
         )
       Blank().layoutWeight(2)

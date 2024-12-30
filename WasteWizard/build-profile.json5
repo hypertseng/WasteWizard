@@ -1,17 +1,26 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication2_VduKRzks_Oa8jK7RgrlRcaV3D-pXjBhYMufG6vzod4w=.cer",
+          "storePassword": "0000001B6297664BA114EE14BE3F68835250E2B9576B734D16DCEA1FC82735213FD51175FA6045208078FF",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BA3F6F5A71C0EAB647A54DBA787581BEDC45C3FC1F6EC74CB3FE454749070EA2BE3C74DF7B3C184",
+          "profile": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication2_VduKRzks_Oa8jK7RgrlRcaV3D-pXjBhYMufG6vzod4w=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication2_VduKRzks_Oa8jK7RgrlRcaV3D-pXjBhYMufG6vzod4w=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
-        "compatibleSdkVersion": "4.1.0(11)",
-        "runtimeOS": "HarmonyOS",
-        "buildOption": {
-          "strictMode": {
-            "caseSensitiveCheck": true,
-          }
-        }
+        "compileSdkVersion": 11,
+        "compatibleSdkVersion": 11,
+        "runtimeOS": "OpenHarmony",
       }
     ],
     "buildModeSet": [

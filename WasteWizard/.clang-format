@@ -12,7 +12,7 @@ IndentCaseLabels: false
 IndentGotoLabels: true
 IndentWrappedFunctionNames: false
 SortUsingDeclarations: false
-NamespaceIndentation: None
+NamespaceIndentation: All
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
@@ -30,8 +30,6 @@ SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-AlignTrailingComments: true
-AlignAfterOpenBracket: true
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortEnumsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All

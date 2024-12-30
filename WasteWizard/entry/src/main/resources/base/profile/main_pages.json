@@ -1,9 +1,6 @@
 {
   "src": [
     "pages/Index",
-    "pages/MainPage",
-    "pages/IngPage",
-    "pages/VisualPage",
-    "pages/ResultPage"
+    "pages/MainPage"
   ]
 }
