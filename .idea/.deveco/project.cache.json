@@ -1,15 +1,15 @@
 {
 	"BuildOptions":{
-		"BUNDLE_NAME":"com.example.helloworld",
+		"BUNDLE_NAME":"com.example.myapplication",
 		"SELECT_BUILD_MODE":"",
 		"BUILD_PATH":{
-			"OUTPUT_PATH":"/Users/meng/DevEcoStudioProjects/WasteWizard/build/outputs/default"
+			"OUTPUT_PATH":"/Users/meng/WasteWizard/build/outputs/default"
 		},
 		"SELECT_BUILD_PRODUCT":"default"
 	},
 	"CommonInfo":{
 		"crossplatform.projectType":"",
-		"project.ide.version":"5.0.5.310",
+		"project.ide.version":"4.1.0.400",
 		"current.select.product":"default",
 		"current.select.buildMode":""
 	}

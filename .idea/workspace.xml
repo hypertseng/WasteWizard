@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d69336-634d-49bd-9d5a-c8dc06d444bd" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/WasteWizard/.hvigor/outputs/build-logs/build.log" beforeDir="false" afterPath="$PROJECT_DIR$/WasteWizard/.hvigor/outputs/build-logs/build.log" afterDir="false" />
-    </list>
+    <list default="true" id="02d69336-634d-49bd-9d5a-c8dc06d444bd" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +46,7 @@
       <recent name="$PROJECT_DIR$/entry/src/main/resources/base/media" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.entry">
+  <component name="RunManager">
     <configuration name="entry" type="HotReLoadTask" factoryName="Hot Reload">
       <MODULE_NAME />
       <REINSTALL_APPLICATION>true</REINSTALL_APPLICATION>
@@ -105,10 +106,6 @@
         <option name="Build.Hvigor.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.entry" />
-      <item itemvalue="Hot Reload.entry" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用级" UseSingleDictionary="true" transferred="true" />
 </project>
