@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "material": {
+          "certpath": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication_e7btw0md_nZAbLbOR4-Yr53PK64PlckYPd5GRfp2_bs=.cer",
+          "storePassword": "0000001A6AA1AA12035233F953A6850F1779374073831A0B7C0C78BB284EB3F7FDB67BF37359E8E82BA6",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A6E31AAE3EECDB8933DE520B6EEFB6C285D1693A16030643C7BA2B87FB90CD8699FB4F15759A2",
+          "profile": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication_e7btw0md_nZAbLbOR4-Yr53PK64PlckYPd5GRfp2_bs=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/Users/一只好吃懒做的猪/.ohos/config/openharmony/default_MyApplication_e7btw0md_nZAbLbOR4-Yr53PK64PlckYPd5GRfp2_bs=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 11,
+        "compatibleSdkVersion": 11,
+        "runtimeOS": "OpenHarmony",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
