@@ -1,13 +1,8 @@
 import picker from '@ohos.file.picker';
-import { checkPermissions, applyPermission, copyFileToCache } from '../util/tool'
+import {copyFileToCache } from '../util/tool'
 import request from '@ohos.request';
-import { Permissions } from '@ohos.abilityAccessCtrl';
-import camera from '@ohos.multimedia.camera';
-import camerapicker from '@ohos.multimedia.cameraPicker';
-import { BusinessError } from '@ohos.base';
-import CheckCameraPermissions from '../util/UserPerm'
 import common from '@ohos.app.ability.common';
-import Logger from '../util/Logger';
+
 
 //上传回调数据类型
 interface ReceiveRes {
@@ -33,29 +28,9 @@ export default struct ImageUploadDialog {
   @Prop uploadURL:string=''//父组件->子组件
   @Consume onImageSelected:string//子组件<->父组件
 
-  //@State imagepath:string="$r('app.media.rightback')"
   private success: (res: ReceiveRes) => void = () => {} //上传成功回调
   private fail: (res: request.TaskState[]) => void = () => {} //上传失败回调
   private complete: (res: request.TaskState[]) => void = () => {} //上传完成回调
-
-  // //检查权限
-  // async checkAppPermission(): Promise<boolean> {
-  //   try {
-  //     const READ_MEDIA_PERMISSION: Permissions = 'ohos.permission.READ_MEDIA' //媒体读取权限
-  //     const WRITE_MEDIA_PERMISSION: Permissions = 'ohos.permission.WRITE_MEDIA' //媒体写入权限
-  //     let permissionList: Permissions[] = []; //需要申请选项列表
-  //     let readPermission = await checkPermissions(READ_MEDIA_PERMISSION)//检查是否有媒体读取权限
-  //     !readPermission && permissionList.push(READ_MEDIA_PERMISSION)
-  //     let writePermission = await checkPermissions(WRITE_MEDIA_PERMISSION)//检查是否有媒体写入权限
-  //     !writePermission && permissionList.push(READ_MEDIA_PERMISSION)
-  //
-  //     return true
-  //   }
-  //
-  //   catch (e) {
-  //     return Promise.reject(e)
-  //   }
-  // }
 
   //开始上传图片 path：图片路径后缀（图片名称）
   async uploadImage(path: string) {
@@ -102,12 +77,7 @@ export default struct ImageUploadDialog {
       Divider().color('#F7F9FA').width('100%').strokeWidth(1)
       //从手机相册选择
       Text('从相册选择').custText().onClick(async () => {
-        //检查是否有读写外部媒体权限
-        // let res: boolean = await this.checkAppPermission()
-        // console.log('checking permission---'+String(res))
-        //无权限返回
-        // if (!res) return
-        //关闭弹窗
+
         this.dialogController.close()
         //从相册选择
         let PhotoSelectOptions = new picker.PhotoSelectOptions();
@@ -125,9 +95,9 @@ export default struct ImageUploadDialog {
             console.log("upload  "+this.onImageSelected)
 
             //上传到服务器
-            // if (filePath) {
-            //   this.uploadImage(filePath)
-            // }
+            if (filePath) {
+              this.uploadImage(filePath)
+            }
 
           }
         })
